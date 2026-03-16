@@ -47,3 +47,19 @@ detach(iris)
 iris$y = with(iris,ifelse(Sepal.Width > 3.0 & Petal.Width > 0.1, Sepal.Length*2,
                           ifelse(Sepal.Length > 7.0, 4.4,
                                  Sepal.Width*1.1))) 
+
+#######################################################
+# 3. Installing and loading new libraries
+#install.packages("dplyr")
+library(dplyr)
+
+#####################################################
+# 4. More complex functions in R
+# when the function gets more complex, you can use lapply
+# here we do it on a matrix
+m <- data.frame(matrix(data=cbind(rnorm(30, 0), rnorm(30, 2), rnorm(30, 5)), nrow=30, ncol=3))
+head(m,3)
+dim(m)
+apply(m,1, mean)  # 1 denotes apply mean (average) on the col/row? (rows)
+apply(m,2, mean)   # 2 denotes apply mean (average) on the col/row?
+
