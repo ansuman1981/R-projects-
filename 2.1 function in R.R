@@ -63,3 +63,21 @@ dim(m)
 apply(m,1, mean)  # 1 denotes apply mean (average) on the col/row? (rows)
 apply(m,2, mean)   # 2 denotes apply mean (average) on the col/row?
 
+
+# Data across USA states
+data(state) 
+df <- state.x77  
+colnames(df)
+apply(state.x77, MARGIN=2, FUN=min)  # min value across each state
+apply(state.x77, MARGIN=2, FUN=mean)
+
+# writing a custom function: quantile function for 0.1 and 0.9
+# this functions computes the mean of the columns such that the outliers outside of
+# 0.1 and 0.9 are excluded
+?quantile
+trimmed.mean1 =  function(v) {  
+  q1 = quantile(v, prob=0.1)
+  q2 = quantile(v, prob=0.9)
+  return(mean(v[q1 <= v & v <= q2]))
+}
+apply(state.x77, MARGIN=2, FUN=trimmed.mean1) 
