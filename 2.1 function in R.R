@@ -41,3 +41,9 @@ iris$Sepal.Length = ifelse(iris$Sepal.Length > 5.0, 1.2*iris$Sepal.Length, 0.8 *
 iris$y = ifelse(iris$Sepal.Width > 3.0, iris$Sepal.Length*2,
                 ifelse(iris$Sepal.Length > 7.0, 4.4,
                        iris$Sepal.Width*1.1))
+detach(iris)
+# more conditions with & and |
+# See operators in https://www.statmethods.net/management/operators.html
+iris$y = with(iris,ifelse(Sepal.Width > 3.0 & Petal.Width > 0.1, Sepal.Length*2,
+                          ifelse(Sepal.Length > 7.0, 4.4,
+                                 Sepal.Width*1.1))) 
