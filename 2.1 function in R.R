@@ -81,3 +81,11 @@ trimmed.mean1 =  function(v) {
   return(mean(v[q1 <= v & v <= q2]))
 }
 apply(state.x77, MARGIN=2, FUN=trimmed.mean1) 
+
+# writing a function takes in argument and apply to 
+trimmed.mean2 = function(v, p1, p2) {
+  q1 = quantile(v, prob=p1)
+  q2 = quantile(v, prob=p2)
+  return(mean(v[q1 <= v & v <= q2]))
+}
+apply(state.x77, MARGIN=2, FUN=trimmed.mean2, p1=0.01, p2=0.99)
