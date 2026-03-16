@@ -28,3 +28,16 @@ func3 <- function(x){
 }
 func3("Eric")
 
+###############################################
+# 2. Using functions for data manipulation
+data(iris)
+# the spatial length column is incorrect and should be
+# if greater than 5.0 -> 1.2x
+# else -> 0.8x
+# write a function that shows this
+iris$Sepal.Length = ifelse(iris$Sepal.Length > 5.0, 1.2*iris$Sepal.Length, 0.8 * iris$Sepal.Length)
+
+# even more if etc. generating new 'corrected' column 'y'
+iris$y = ifelse(iris$Sepal.Width > 3.0, iris$Sepal.Length*2,
+                ifelse(iris$Sepal.Length > 7.0, 4.4,
+                       iris$Sepal.Width*1.1))
